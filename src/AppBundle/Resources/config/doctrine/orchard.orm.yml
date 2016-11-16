@@ -1,0 +1,39 @@
+AppBundle\Entity\orchard:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\orchardRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        number:
+            type: string
+            length: 255
+        street:
+            type: string
+            length: 255
+        town:
+            type: string
+            length: 255
+        zipCode:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToMany:
+        users:
+          targetEntity: user
+          inversedBy: orchards
+          joinTable:
+            name: orchard_users
+            joinColumns:
+              user_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              orchard_id:
+                referencedColumnName: id
